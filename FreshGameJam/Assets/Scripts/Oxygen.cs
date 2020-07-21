@@ -24,6 +24,11 @@ public UnityEvent onOxygenOut;
         else
             currentOxygen -= Time.deltaTime;
     }
+    public void ResetOxygen() {
+        if (currentOxygen != startOxygen)
+            currentOxygen = startOxygen;
+    
+    }
 
 
 
