@@ -11,6 +11,7 @@ public float currentOxygen;
 public UnityEvent onOxygenOut;
     
 
+public bool isBreathing = false;
 
 
     void Start() {
@@ -18,6 +19,12 @@ public UnityEvent onOxygenOut;
     }
     void Update() {
         currentOxygen = Mathf.Clamp(currentOxygen, 0f, maxOxygen);
+
+        if (isBreathing)
+            currentOxygen = startOxygen;
+
+
+
 
         if (currentOxygen <= 0)
             onOxygenOut.Invoke();
@@ -27,7 +34,6 @@ public UnityEvent onOxygenOut;
     public void ResetOxygen() {
         if (currentOxygen != startOxygen)
             currentOxygen = startOxygen;
-    
     }
 
 
