@@ -5,18 +5,25 @@ public class PlayerMovement : MonoBehaviour {
 
     Rigidbody2D rb;
 
+    [Header("Movement")]
     public float moveSpeed = 10f;
+    public float suitMoveSpeed = 7f;
     public float jumpForce = 3f;
+    [HideInInspector]
+    public float speed;
+    [Space(10)]
+    [Header("Jumping")]
     public Transform groundCheck;
     public float checkRadius = 0.3f;
     public LayerMask whatIsGround;
   
-    public float isGroundedRemember = 0.2f;
-    bool isGrounded = false;
+    private float isGroundedRemember = 0.2f;
+    private bool isGrounded = false;
     float inputvar;
 
 
     void Start() {
+        speed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();        
     }
     void Update() {
@@ -36,12 +43,12 @@ public class PlayerMovement : MonoBehaviour {
         inputvar = Input.GetAxisRaw("Horizontal");
     }
     void FixedUpdate() {
-        Vector2 movement = new Vector2(inputvar * moveSpeed, rb.velocity.y);
+        Vector2 movement = new Vector2(inputvar * speed, rb.velocity.y);
 
         rb.velocity = movement;
     }
     void Jump() {
-        if (isGrounded) {
+        if (isGroundedRemember >= 0) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }

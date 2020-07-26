@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    Battery batteryScript;
+    public Battery batteryScript;
     public Slider batBar;
 
     void Update() {

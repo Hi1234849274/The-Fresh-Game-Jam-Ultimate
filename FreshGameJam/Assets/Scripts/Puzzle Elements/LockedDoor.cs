@@ -28,5 +28,6 @@ public class LockedDoor : MonoBehaviour {
     }
     void Reset() {
         gM = FindObjectOfType<GameManager>();
+        inventory = gM.Player.GetComponent<Inventory>();
     }
 }

@@ -47,4 +47,18 @@ public class Inventory : MonoBehaviour
         }
         return foundItem;
     }
+    public void RemoveAll(Item itemToRemoveAll) {
+        for (int j = 0; j > items.Count; j++) {
+            if (items[j] == itemToRemoveAll) {
+                //  Remove Item
+                items.Remove(itemToRemoveAll);
+                if (slotImages[j].sprite == Resources.Load("Graphics/" + itemToRemoveAll.GetName()) as Sprite) {
+                    slotImages[j].sprite = null;
+                    slotImages[j].enabled = false;
+                    isFull[j] = false;
+                }
+
+            }
+        }
+    }
 }

@@ -8,7 +8,7 @@ UTILITY
 
 
 
-
+[System.Serializable]
 public class Item {
 
     public ItemType type;

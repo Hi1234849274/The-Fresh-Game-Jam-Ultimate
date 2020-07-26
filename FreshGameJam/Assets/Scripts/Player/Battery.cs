@@ -16,15 +16,15 @@ public class Battery : MonoBehaviour
     }
     void Update() {
         currentBattery = Mathf.Clamp(currentBattery, 0f, maxBattery);
-    
+        if (isPowered) {
+            currentBattery += Time.deltaTime;
+        }
         if (currentBattery <= 0) {
             if (!isPowered)
                 onBatteryOut.Invoke();
         } else {
             if (!isPowered)
                 currentBattery -= Time.deltaTime;
-            else
-                currentBattery += Time.deltaTime;
         }
     }
     public void RefillBattery(float resetTo) {
