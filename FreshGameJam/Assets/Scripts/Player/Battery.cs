@@ -16,7 +16,7 @@ public class Battery : MonoBehaviour
     }
     void Update() {
         currentBattery = Mathf.Clamp(currentBattery, 0f, maxBattery);
-
+    
         if (currentBattery <= 0) {
             if (!isPowered)
                 onBatteryOut.Invoke();
@@ -27,8 +27,7 @@ public class Battery : MonoBehaviour
                 currentBattery += Time.deltaTime;
         }
     }
-    public void RefillBattery() {
-        if (currentBattery != startBattery)
-            currentBattery = startBattery;
+    public void RefillBattery(float resetTo) {
+        currentBattery = resetTo;
     }
-}
+} 

@@ -21,10 +21,12 @@ public class DoorButton : MonoBehaviour {
         }
     }
     void OnMouseDown() {
-        if (isPressed) {
-            UnPress();
-        } else {
-            Press();
+        if (Vector2.Distance(transform.position, gM.Player.transform.position) < distanceToPressMax) {
+            if (isPressed) {
+                UnPress();
+            } else {
+                Press();
+            }
         }
     }
     void Press() {

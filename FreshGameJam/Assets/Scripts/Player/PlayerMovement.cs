@@ -17,12 +17,11 @@ public class PlayerMovement : MonoBehaviour {
 
 
     void Start() {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();        
     }
     void Update() {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) {
             Jump();
-            Debug.Log("Jump key pressed");
         }
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
@@ -34,7 +33,7 @@ public class PlayerMovement : MonoBehaviour {
             isGroundedRemember -= Time.deltaTime;
 
         
-        inputvar = Input.GetAxis("Horizontal");
+        inputvar = Input.GetAxisRaw("Horizontal");
     }
     void FixedUpdate() {
         Vector2 movement = new Vector2(inputvar * moveSpeed, rb.velocity.y);
@@ -44,9 +43,6 @@ public class PlayerMovement : MonoBehaviour {
     void Jump() {
         if (isGrounded) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            Debug.Log("Jumping");
-            Debug.Log("Velocity: " + rb.velocity.y);
-            
         }
     }
 }
