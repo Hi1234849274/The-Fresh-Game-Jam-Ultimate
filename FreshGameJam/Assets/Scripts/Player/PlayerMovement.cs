@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void Start() {
         speed = moveSpeed;
-        rb = GetComponent<Rigidbody2D>();        
+        rb = GetComponent<Rigidbody2D>();
     }
     void Update() {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) {
